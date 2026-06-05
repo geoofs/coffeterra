@@ -472,7 +472,7 @@
 
 
 
-    /* ===== MOBILE LEGEND RESPONSIVE ===== */
+    
     @media (max-width: 768px){
       #legendBox{
         min-width: 170px !important;
@@ -526,7 +526,7 @@
     }
   
 
-    /* SPECIAL FOR YOU SLIDER FIX */
+  
     .special-slider .special-card img,
     .special-card img,
     .special-for-you img {
@@ -539,7 +539,7 @@
       display: block !important;
     }
   
-    /* SPECIAL FOR YOU SLIDER FIX */
+   
     .special-slider,
     .special-for-you,
     .special-grid,
@@ -3357,7 +3357,7 @@ homeBtn.addEventListener('click', (e)=>{
 document.querySelectorAll('.top-link').forEach(link=>{
   link.addEventListener('click', function(e){
 
-    // hide contact section ketika buka TOP 10
+   
     const contactSection = document.getElementById('contactSection');
     if(contactSection){
       contactSection.style.display = 'none';
@@ -3724,7 +3724,7 @@ mapBtn.addEventListener('click', function(e){
       attribution: '&copy; OpenStreetMap'
     }).addTo(map);
 
-    // ===== USER LOCATION & FLEXIBLE BUFFER =====
+  
     let userMarker = null;
     let userBuffer = null;
 
@@ -3734,7 +3734,7 @@ mapBtn.addEventListener('click', function(e){
           const lat = position.coords.latitude;
           const lng = position.coords.longitude;
 
-          // marker lokasi user
+          
           userMarker = L.circleMarker([lat,lng],{
             radius:8,
             fillColor:'##1A1A1A',
@@ -3744,7 +3744,7 @@ mapBtn.addEventListener('click', function(e){
           }).addTo(map)
           .bindPopup('Your Location');
 
-          // flexible buffer
+          
           userBuffer = L.circle([lat,lng],{
             radius:1000,
             color:'red',
@@ -4175,7 +4175,7 @@ window.closeModal = function(){
   if(panel) panel.remove();
 }
 
-// ===== SMART LIVE ROUTING SYSTEM =====
+
 let navigationStarted = false;
 let liveNavigationEnabled = false;
 let lastGpsPosition = null;
@@ -4364,7 +4364,7 @@ window.startRoute = function(name){
       boxZoom:true
     }).setView([selected.lat, selected.lng], 15);
 
-    // DETECT USER MANUAL MAP INTERACTION
+    
     routingMap.on('zoomstart dragstart movestart',()=>{
       userInteractingWithMap = true;
     });
@@ -4450,7 +4450,7 @@ window.startRoute = function(name){
             etaEl.innerHTML = `${minutes} min`;
           }
 
-          // REAL GPS-BASED LIVE NAVIGATION UPDATE
+          
           if(liveNavigationEnabled && typeof window.liveNavigationUpdater === 'function'){
             window.liveNavigationUpdater(parseFloat(km));
           }
@@ -4490,7 +4490,7 @@ window.startRoute = function(name){
       updateRoute(pos.coords.latitude, pos.coords.longitude);
     });
 
-    // ===== MOBILE DRAGGABLE BOTTOM SHEET =====
+    
     const sheet = document.getElementById('sheetContainer');
     const handle = document.getElementById('sheetHandleArea');
 
@@ -4719,13 +4719,13 @@ window.backToComap = function(){
   document.querySelectorAll('.nav-item')[1].click();
 }
 
-    // INITIAL MARKERS
+    
     addMarkers(aesthetic, aestheticLayer, 'red');
     addMarkers(working, workingLayer, 'orange');
     addMarkers(family, familyLayer, 'green');
     addMarkers(romantic, romanticLayer, 'pink');
 
-    // ===== DISTANCE BUFFER CONTROL =====
+    
     const distanceToggle = document.getElementById('distanceToggle');
     const distanceSlider = document.getElementById('distanceSlider');
     const distanceValue = document.getElementById('distanceValue');
@@ -4756,13 +4756,11 @@ window.backToComap = function(){
       }
     });
 
-    // default visible karena checkbox aktif
+    
     if(userBuffer && distanceToggle.checked){
       map.addLayer(userBuffer);
     }
-
-
-    // ===== RATING FILTER =====
+    
     const ratingSlider = document.getElementById('ratingSlider');
     const ratingInput = document.getElementById('ratingInput');
     const ratingValue = document.getElementById('ratingValue');
@@ -4800,18 +4798,18 @@ window.backToComap = function(){
         .replace(/,/g,'.')
         .replace(/[^0-9.]/g,'');
 
-      // cegah titik lebih dari satu
+      
       const parts = raw.split('.');
       if(parts.length > 2){
         raw = parts[0] + '.' + parts.slice(1).join('');
       }
 
-      // responsif saat user mengetik koma / titik
+      
       if(fromInput){
         ratingInput.value = raw;
       }
 
-      // izinkan kondisi mengetik sementara
+      
       if(raw === '' || raw === '.'){
         return;
       }
@@ -4828,7 +4826,7 @@ window.backToComap = function(){
       ratingSlider.value = val;
       ratingValue.innerText = val.toFixed(1);
 
-      // jangan paksa format saat user masih mengetik
+      
       if(!fromInput){
         ratingInput.value = val.toFixed(1);
       }
@@ -4893,7 +4891,7 @@ window.backToComap = function(){
 
     updateMarkerLabels();
 
-    // ===== SEARCH BY NAME =====
+    
     const mapSearchInput = document.getElementById('mapSearchInput');
 
     if(mapSearchInput){
